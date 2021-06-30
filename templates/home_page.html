@@ -13,11 +13,25 @@
 <script type="text/javascript" src="{% static 'js/lightslider.js' %}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#autoWidth').lightSlider({
+    $('#autoWidth-rec').lightSlider({
         autoWidth:true,
         keyPress:true,
         onSliderLoad: function() {
-            $('#autoWidth').removeClass('cS-hidden');
+            $('#autoWidth-rec').removeClass('cS-hidden-rec');
+        } 
+    });  
+    $('#autoWidth-gen').lightSlider({
+        autoWidth:true,
+        keyPress:true,
+        onSliderLoad: function() {
+            $('#autoWidth-gen').removeClass('cS-hidden-gen');
+        } 
+    });  
+    $('#autoWidth-lang').lightSlider({
+        autoWidth:true,
+        keyPress:true,
+        onSliderLoad: function() {
+            $('#autoWidth-lang').removeClass('cS-hidden-lang');
         } 
     });  
   });
@@ -36,7 +50,7 @@
 
     <!-- Recommendations Section -->
     <section class="rec">
-        <ul id="autoWidth" class="cs-hidden">
+        <ul id="autoWidth-rec" class="cs-hidden-rec">
             <li class="item-a">
                 <div class="box">
                     <div class="slide-img">
@@ -121,7 +135,204 @@
         </ul>
     </section>
 
-    
+
+    <section class="wrapper">
+        <div class="genre">
+            <h4>BY GENRE</h4>
+            <span class="filter">
+                <ul>
+                    <li class="list active" data-filter="All">#All</li>
+                    <li class="list" data-filter="Horror">#Horror</li>
+                    <li class="list" data-filter="Comedy">#Comedy</li>
+                    <li class="list" data-filter="Thriller">#Thriller</li>
+                    <li class="list" data-filter="Romantic">#Romantic</li>
+                    <li class="list" data-filter="Sci-Fi">#Sci-Fi</li>
+                    <li class="list" data-filter="Documentary">#Documentary</li>
+                </ul>
+            </span>
+            <div class="gen">
+                <ul id="autoWidth-gen" class="cs-hidden-gen">
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="trending">
+            <h5>Currently Trending</h5>
+            <div class="trend">
+                <ul>
+                    <li class="item">Element 1</li>
+                    <li class="item">Element 2</li>
+                    <li class="item">Element 3</li>
+                    <li class="item">Element 4</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                    <li class="item">Element 5</li>
+                </ul>
+            </div>
+        </div>
+        <div class="language">
+            <h4>BY LANGUAGE</h4>
+            <span class="filter">
+                <ul>
+                    <li class="list active" data-filter="All">#All</li>
+                    <li class="list" data-filter="English">#English</li>
+                    <li class="list" data-filter="Hindi">#Hindi</li>
+                    <li class="list" data-filter="Others">#Others</li>
+                </ul>
+            </span>
+            <div class="lang">
+                <ul id="autoWidth-lang" class="cs-hidden-lang">
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-a">
+                        <div class="box">
+                            <div class="slide-img">
+                                <img alt="1" src="{% static 'images/movie1.jpg' %}">
+                                <div class="overlay">
+                                    <a href="#" class="buy-btn">Add to Watched</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="latest">
+            <h5>Latest Releases</h5>
+        </div>
+    </section>
 
 </section>
 

@@ -245,7 +245,18 @@ div > img {
 --------------------------------------------------------------*/
 
 .mb-4 {
-  padding: 10px 200px;
+  width: 100%;
+  display: inline-block;
+}
+
+.contact-parent {
+  width: auto;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.contact {
+  width: auto;
 }
 
 .mb-4 a {
@@ -261,12 +272,14 @@ div > img {
   letter-spacing: 2px;
   transition: 0.2s;
 }
+
 .mb-4 a:hover {
   letter-spacing: 6px;
 }
 
 @media (max-width: 575px) {
-  .mb-4 {
-    padding: 10px 20px;
+  .contact-parent {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

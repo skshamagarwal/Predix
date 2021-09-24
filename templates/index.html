@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} PredixDB {% endblock %}
+{% block title %} WELCOME | PredixDB {% endblock %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" />
@@ -16,7 +16,8 @@
         <h2>For a seamless </h2>
         <h3>Media consumption</h3>
         <p>
-            We are here to assist you with tracking of all your media consumption, and providing you with regular updates for you favorite shows.
+            We are here to assist you with tracking of all your media consumption, and providing you with regular
+            updates for you favorite shows.
         </p>
         <a href="/home">Get Started</a>
     </div>
@@ -78,8 +79,9 @@
     <p class="text-center w-responsive mx-auto mb-5">Do you have any questions?
         Please do not hesitate to contact us directly. Our team will come back
         to you within a matter of hours to help you.</p>
-    <div class="row">
-        <div class="col-md-9 mb-md-0 mb-5">
+
+    <div class="contact-parent">
+        <div class="contact">
             <form id="contact-form" name="contact-form" action="mail.php" method="POST">
                 <div class="row">
                     <div class="col-md-6">
@@ -116,23 +118,6 @@
             <div class="text-center text-md-left" style="padding-top: 10px;">
                 <a href="#">Send</a>
             </div>
-            <div class="status"></div>
-        </div>
-        <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>DYPIU, Akurdi, Pune, India</p>
-                </li>
-                <li>
-                    <i class="fas fa-phone mt-4 fa-2x"></i>
-                    <p>+ 91 9057297344</p>
-                </li>
-                <li>
-                    <i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>predixdb@gmail.com</p>
-                </li>
-            </ul>
         </div>
     </div>
 </section>

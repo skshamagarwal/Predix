@@ -459,6 +459,16 @@ Trending
 .trending div.trend {
   margin-top: 20px;
   width: 100%;
-  height: 280px;
+  height: 340px;
   overflow: auto;
+}
+.latest div.trend {
+  margin-top: 20px;
+  width: 100%;
+  height: 340px;
+  overflow: auto;
+}
+
+section .wrapper {
+  padding-bottom: 40px;
 }

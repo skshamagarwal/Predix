@@ -12,29 +12,29 @@
 {% block script %}
 <script type="text/javascript" src="{% static 'js/lightslider.js' %}"></script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#autoWidth-rec').lightSlider({
-        autoWidth:true,
-        keyPress:true,
-        onSliderLoad: function() {
-            $('#autoWidth-rec').removeClass('cS-hidden-rec');
-        } 
-    });  
-    $('#autoWidth-gen').lightSlider({
-        autoWidth:true,
-        keyPress:true,
-        onSliderLoad: function() {
-            $('#autoWidth-gen').removeClass('cS-hidden-gen');
-        } 
-    });  
-    $('#autoWidth-lang').lightSlider({
-        autoWidth:true,
-        keyPress:true,
-        onSliderLoad: function() {
-            $('#autoWidth-lang').removeClass('cS-hidden-lang');
-        } 
-    });  
-  });
+    $(document).ready(function () {
+        $('#autoWidth-rec').lightSlider({
+            autoWidth: true,
+            keyPress: true,
+            onSliderLoad: function () {
+                $('#autoWidth-rec').removeClass('cS-hidden-rec');
+            }
+        });
+        $('#autoWidth-gen').lightSlider({
+            autoWidth: true,
+            keyPress: true,
+            onSliderLoad: function () {
+                $('#autoWidth-gen').removeClass('cS-hidden-gen');
+            }
+        });
+        $('#autoWidth-lang').lightSlider({
+            autoWidth: true,
+            keyPress: true,
+            onSliderLoad: function () {
+                $('#autoWidth-lang').removeClass('cS-hidden-lang');
+            }
+        });
+    });
 </script>
 {% endblock %}
 
@@ -135,7 +135,7 @@
         </ul>
     </section>
 
-
+    <!-- Other Movies Sections -->
     <section class="wrapper">
         <div class="genre">
             <h4>BY GENRE</h4>
@@ -162,7 +162,7 @@
                             </div>
                         </div>
                     </li>
-                    
+
                     <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
@@ -219,38 +219,93 @@
         <div class="trending">
             <h5>Currently Trending</h5>
             <div class="trend">
-                <ul>
-                    <li class="item">Element 1</li>
-                    <li class="item">Element 2</li>
-                    <li class="item">Element 3</li>
-                    <li class="item">Element 4</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                    <li class="item">Element 5</li>
-                </ul>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="language">
@@ -275,7 +330,7 @@
                             </div>
                         </div>
                     </li>
-                    
+
                     <li class="item-a">
                         <div class="box">
                             <div class="slide-img">
@@ -331,6 +386,95 @@
         </div>
         <div class="latest">
             <h5>Latest Releases</h5>
+            <div class="trend">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                        style="margin-bottom: 10px; border-radius: 5px;">
+                        <div class="row">
+                            <div class="section1">
+                                <img src="{% static 'images/movie1.jpg' %}"
+                                    style="height: 80px; margin-right: 20px; margin-left: 5px; border-radius: 5px; filter: drop-shadow(2px 2px 10px #7b7b7c);">
+                            </div>
+                            <div class="section2" style="width: 80%;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Movie Name</h5>
+                                    <small class="text-muted">#1</small>
+                                </div>
+                                <p class="mb-1">Movie Description Goes here</p>
+                                <small class="text-muted">Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 

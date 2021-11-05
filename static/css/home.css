@@ -11,11 +11,18 @@
   background-color: #000000ea;
 }
 
+.view-more {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 /*--------------------------------------------------------------
 Search Bar
 --------------------------------------------------------------*/
 
-.search {
+.head {
   padding: 0;
   margin: 0;
   height: 50vh;
@@ -24,7 +31,7 @@ Search Bar
     url("../images/search-bg.jpg") center center;
 }
 
-.search form {
+.head form {
   position: relative;
   top: 50%;
   left: 50%;
@@ -40,7 +47,7 @@ Search Bar
   box-shadow: 2px 2px #000000;
 }
 
-.search input {
+.head input {
   position: absolute;
   top: 0;
   left: 0;
@@ -55,7 +62,7 @@ Search Bar
   padding: 0 20px;
 }
 
-.search .fa {
+.head .fa {
   box-sizing: border-box;
   padding: 10px;
   width: 42.5px;
@@ -70,22 +77,22 @@ Search Bar
   transition: all 1s;
 }
 
-.search form:hover {
+.head form:hover {
   width: 400px;
   cursor: pointer;
 }
 
-.search form:hover input {
+.head form:hover input {
   display: block;
 }
 
-.search form:hover .fa {
+.head form:hover .fa {
   background: #000000;
   color: white;
 }
 
 @media (max-width: 575px) {
-  .search form:hover {
+  .head form:hover {
     width: 90%;
   }
 }
@@ -471,4 +478,14 @@ Trending
 
 section .wrapper {
   padding-bottom: 40px;
+}
+
+/*--------------------------------------------------------------
+Upcoming
+--------------------------------------------------------------*/
+.upcoming {
+  position: relative;
+  width: 80%;
+  margin: 0px auto 0px auto;
+  color: #ffffff;
 }

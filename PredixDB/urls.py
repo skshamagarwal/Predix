@@ -19,10 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.HomePage import views as homeView
+from apps.ProfilePage import views as profileView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView.landingPage),
     path('home/', homeView.homePage),
-    
+    path('profile/', profileView.myProfile),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

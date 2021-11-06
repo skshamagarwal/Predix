@@ -9,6 +9,9 @@
 
 .main {
   background-color: #000000ea;
+  position:relative;
+  width:100%;
+  overflow:hidden;
 }
 
 .view-more {

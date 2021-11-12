@@ -42,10 +42,17 @@
 }
 
 .profile {
-  margin: 20px 30px auto 30px;
   text-align: center;
   align-items: center;
   justify-content: center;
   color: #FFF;
 }
 
+.card {
+  height: 120px;
+  width: 120px;
+}
+
+.title {
+  color: black;
+}

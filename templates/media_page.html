@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} Media Name {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/media_page.css' %}">
+{% endblock %}
+
+{% block script %}
+<!-- <script src="{% static 'js/profile.js' %}"></script> -->
+{% endblock %}
+
+{% block body %}
+<div class="main">
+    <div class="cover">
+        <img src="{% static 'images/upcoming_check.jpg' %}" alt="">
+    </div>
+    <div class="container" style="margin-bottom: 40px;">
+        <div class="details">
+            <div class="media-cover">
+                <img src={{media_info.cover}} alt="" class="avatar">
+                <form action={{media_info.trailer}}>
+                    <div class="media-btn">
+                        <button>WATCH TRAILER</button>
+                    </div>
+                </form>
+                <div class="media-btn">
+                    <button>BUY TICKETS</button>
+                </div>
+            </div>
+
+            <div class="description-block">
+                <div class="overview">
+                    <div class="media-name">
+                        <h1>{{media_info.title}}</h1>
+                    </div>
+                    <div class="add-to-profile">
+                        <!-- To Favourite -->
+                        <div class="add-to">
+                            <div class="icon">
+                                <i class='bx bx-play'></i>
+                            </div>
+                            <p class="text">
+                                Add to Watch List
+                            </p>
+                        </div>
+                        <!-- To Watch List -->
+                        <div class="add-to">
+                            <div class="icon">
+                                <i class='bx bxs-heart'></i>
+                            </div>
+                            <p class="text">
+                                Add to Favourite
+                            </p>
+                        </div>
+                        <!-- To Watched -->
+                        <div class="add-to">
+                            <div class="icon">
+                                <i class='bx bx-check-double'></i>
+                            </div>
+                            <p class="text">
+                                Add to Watched
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <h1>Overview</h1>
+                    <hr class="underline">
+                    <p class="desc_text">{{media_info.description}}</p>
+
+                    <div class="bullets">
+                        <div class="point">
+                            <p class="key">Released On: </p>
+                            <p class="val">{{media_info.rdate}}</p>
+                        </div>
+                        <div class="point">
+                            <p class="key">Genre:</p>
+                            <p class="val">{{media_info.genre|join:" , "}}</p>
+                        </div>
+                        <div class="point">
+                            <p class="key">Rating:</p>
+                            <p class="val">{{media_info.rating}}</p>
+                        </div>
+                        <div class="point">
+                            <p class="key">Category:</p>
+                            <p class="val">{{media_info.type}}</p>
+                        </div>
+                        <div class="point">
+                            <p class="key">Media Language:</p>
+                            <p class="val">{{media_info.language|join:" , "}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

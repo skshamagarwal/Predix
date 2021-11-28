@@ -11,13 +11,11 @@
   <link rel="stylesheet" href="{% static '/css/base.css' %}">
   <link href="{% static 'bootstrap/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4417a7216a.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="{% static 'js/lightslider.js' %}"></script>
 
   {% block css %}{% endblock %}
 </head>
 
 <body>
-
   <!-- Navigation Bar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light justify-content-between">
     <a class="navbar-brand" href="/">PredixDB</a>
@@ -29,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'dashboard' 'movies' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -37,11 +35,13 @@
             Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Movies</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'movies' %}">Movies</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Anime</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'tvseries' %}">TV Series</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">TV Series</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'anime' %}">Anime</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'dashboard' 'manga' %}">TV Series</a>
           </div>
         </li>
         <!-- <li class="nav-item">
@@ -53,15 +53,105 @@
       </ul>
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-link px-3 me-2" style="color: black;">
+        <button type="button" class="btn btn-link px-3 me-2" data-toggle="modal" data-target="#loginModal" style="color: black;">
           Login
         </button>
-        <button type="button" class="btn btn-primary me-3" style="background-color: black; border-color: black;">
+        <button type="button" class="btn btn-primary me-3" data-toggle="modal" data-target="#signUpModal" style="background-color: black; border-color: black;">
           Sign up for free
         </button>
       </div>
     </div>
   </nav>
+
+
+<!-- LOGIN Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Welcome Back!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+              <div class="p-2">
+
+                <h6 style="letter-spacing: 1px;">Enter Your Credentials</h6>
+  
+                <div class="form-outline mt-4 mb-4">
+                  <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                  <label class="form-label" for="form2Example17">Email address</label>
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                  <label class="form-label" for="form2Example27">Password</label>
+                </div>
+  
+                <div class="pt-1 mb-4">
+                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="button">Login</button>
+                </div>
+  
+                <a class="small text-muted" href="#!">Forgot password?</a>
+                <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#signUpModal" data-toggle="modal" data-dismiss="modal"  style="color: #393f81;">Register here</a></p>
+                <a href="#!" class="small text-muted">Terms of use.</a>
+                <a href="#!" class="small text-muted">Privacy policy</a>
+              </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SIGNUP Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Account!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form>
+              <div class="p-2">
+
+                <h6 style="letter-spacing: 1px;">Enter Your Details</h6>
+  
+                <div class="form-outline mt-4 mb-4">
+                  <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                  <label class="form-label" for="form2Example17">Email address</label>
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                  <label class="form-label" for="form2Example27">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                  <label class="form-label" for="form2Example27">Confirm Password</label>
+                </div>
+  
+                <div class="pt-1 mb-4">
+                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="button">Sign Up</button>
+                </div>
+
+                <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="#loginModal" data-toggle="modal" data-dismiss="modal" style="color: #393f81;">Sign In here</a></p>
+                <a href="#!" class="small text-muted">Terms of use.</a>
+                <a href="#!" class="small text-muted">Privacy policy</a>
+              </div>
+            </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 
   {% block body %}{% endblock %}
 
@@ -81,11 +171,11 @@
                 <strong>Email:</strong> predixdb@gmail.com<br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="mail"><i class="fas fa-envelope-square"></i></a>
-                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="github"><i class="fab fa-github"></i></a>
-                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="mail"><i class='bx bxs-envelope'></i></a>
+                <a href="#" class="twitter"><i class='bx bxl-twitter' ></i></a>
+                <a href="#" class="github"><i class='bx bxl-github' ></i></a>
+                <a href="#" class="instagram"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="linkedin"><i class='bx bxl-linkedin' ></i></a>
               </div>
             </div>
           </div>
@@ -93,7 +183,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'dashboard' 'movies' %}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#cta">Contribute</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#contact">Contact Us</a></li>

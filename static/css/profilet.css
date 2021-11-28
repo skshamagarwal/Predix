@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.main {
+  background-color: #000000ea;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.cover {
+  position: relative;
+  z-index: 1;
+}
+.cover img {
+  width: 100vw;
+  height: 300px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.details {
+  display: table-row;
+}
+
+.profile-block {
+  z-index: 10;
+  position: relative;
+  float: left;
+  width: 15vw;
+  background-color: #0f0f0f;
+  margin-top: -100px;
+  border-radius: 10px;
+  border: 3px solid #272727;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.profile-block hr {
+  width: 100%;
+  border-top: 1px solid #272727;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.avatar-block {
+  width: 100%;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  border: 3px solid #fff;
+  margin-bottom: 20px;
+}
+
+.change-avatar {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  font-size: small;
+  font-weight: 400;
+  width: 150px;
+  height: 35px;
+  background-color: #da1515;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+  transition-property: transform;
+}
+
+.change-avatar button {
+  color: #fff;
+  background-color: #da1515;
+  border: none;
+}
+
+.change-avatar:hover {
+  transform: scale(1.1);
+}
+
+.change-avatar:hover button {
+  color: black;
+}
+
+.media-block,
+.settings-block {
+  font-weight: 300;
+  margin-left: 20px;
+}
+
+.profile-block p {
+  color: #bbb;
+}
+
+.profile-block h6 {
+  color: #fff;
+  padding-bottom: 5px;
+}
+
+.profile-block h6:hover {
+  color: #da1515;
+  cursor: pointer;
+}
+
+.content-block {
+  position: relative;
+  margin-top: -100px;
+  margin-left: 5vw;
+  float: right;
+  z-index: 100;
+}
+
+.name {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+.name h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 2px 2px 8px #000000;
+}
+.media {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.wrapper {
+  position: relative;
+  width: 50vw;
+}
+.wrapper nav {
+  display: flex;
+  justify-content: center;
+}
+.wrapper .items {
+  display: flex;
+  max-width: 520px;
+  width: 100%;
+  justify-content: space-between;
+}
+.items span {
+  padding: 7px 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #da1515;
+  border-radius: 50px;
+  border: 2px solid #da1515;
+  transition: all 0.3s ease;
+}
+.items span.active,
+.items span:hover {
+  color: #fff;
+  background: #da1515;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+
+
+.list-item {
+  padding: 4px;
+  position: relative;
+  cursor: pointer;
+  margin: 0 5px;
+  margin-bottom: 10px;
+}
+.gallery .list-item.hide{
+  display: none;
+}
+.gallery .list-item.show{
+  animation: animate 0.4s ease;
+}
+@keyframes animate {
+  0%{
+    transform: scale(0.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.list-item img {
+  border-radius: 5px;
+  width: calc(190px*0.71);
+  height: calc(300px*0.71);
+  object-fit: cover;
+}
+
+.description {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.9);
+  transition: all 1s ease;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #858585ea;
+  padding: 15px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.description .d-text {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+.d-text h3 {
+  font-size: 18px;
+}
+.divider {
+  border-top: 2px solid #bbb;
+  border-radius: 5px;
+}
+.d-text p {
+  font-size: 16px;
+}
+
+.list-item:hover .description {
+  opacity: 1;
+}
+
+.btns {
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.btns button {
+  height: 30px;
+  margin: 8px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.btns button:hover {
+  transform: scale(1.3);
+}

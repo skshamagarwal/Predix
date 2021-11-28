@@ -1,4 +1,0 @@
-pip install django
-pip install django-binary-database-files
-
-pip install djongo

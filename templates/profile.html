@@ -5,61 +5,11 @@
 {% block title %} My Profile | PredixDB {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/profilet.css' %}">
 {% endblock %}
 
 {% block script %}
-<script>
-    //selecting all required elements
-    const filterItem = document.querySelector(".items");
-    const filterImg = document.querySelectorAll(".gallery .image");
-    window.onload = () => { //after window loaded
-        filterItem.onclick = (selectedItem) => { //if user click on filterItem div
-            if (selectedItem.target.classList.contains("item")) { //if user selected item has .item class
-                filterItem.querySelector(".active").classList.remove("active"); //remove the active class which is in first item
-                selectedItem.target.classList.add("active"); //add that active class on user selected item
-                let filterName = selectedItem.target.getAttribute("data-name"); //getting data-name value of user selected item and store in a filtername variable
-                filterImg.forEach((image) => {
-                    let filterImges = image.getAttribute("data-name"); //getting image data-name value
-                    //if user selected item data-name value is equal to images data-name value
-                    //or user selected item data-name value is equal to "all"
-                    if ((filterImges == filterName) || (filterName == "all")) {
-                        image.classList.remove("hide"); //first remove the hide class from the image
-                        image.classList.add("show"); //add show class in image
-                    } else {
-                        image.classList.add("hide"); //add hide class in image
-                        image.classList.remove("show"); //remove show class from the image
-                    }
-                });
-            }
-        }
-        for (let i = 0; i < filterImg.length; i++) {
-            filterImg[i].setAttribute("onclick", "preview(this)"); //adding onclick attribute in all available images
-        }
-    }
-    //fullscreen image preview function
-    //selecting all required elements
-    // const previewBox = document.querySelector(".preview-box"),
-    //     categoryName = previewBox.querySelector(".title p"),
-    //     previewImg = previewBox.querySelector("img"),
-    //     closeIcon = previewBox.querySelector(".icon"),
-    //     shadow = document.querySelector(".shadow");
-    // function preview(element) {
-    //     //once user click on any image then remove the scroll bar of the body, so user cant scroll up or down
-    //     document.querySelector("body").style.overflow = "hidden";
-    //     let selectedPrevImg = element.querySelector("img").src; //getting user clicked image source link and stored in a variable
-    //     let selectedImgCategory = element.getAttribute("data-name"); //getting user clicked image data-name value
-    //     previewImg.src = selectedPrevImg; //passing the user clicked image source in preview image source
-    //     categoryName.textContent = selectedImgCategory; //passing user clicked data-name value in category name
-    //     previewBox.classList.add("show"); //show the preview image box
-    //     shadow.classList.add("show"); //show the light grey background
-    //     closeIcon.onclick = () => { //if user click on close icon of preview box
-    //         previewBox.classList.remove("show"); //hide the preview box
-    //         shadow.classList.remove("show"); //hide the light grey background
-    //         document.querySelector("body").style.overflow = "auto"; //show the scroll bar on body
-    //     }
-    // }
-</script>
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -67,72 +17,281 @@
     <div class="cover">
         <img src="{% static 'images/upcoming_check.jpg' %}" alt="">
     </div>
-    <div class="avatar">
-        <img src="{% static 'images/movie1.jpg' %}" alt="">
+    <div class="container">
+        <div class="details">
+            <div class="profile-block">
+                <div class="avatar-block">
+                    <img src="{% static 'images/movie1.jpg' %}" alt="" class="avatar">
+                    <div class="change-avatar">
+                        <button>CHANGE AVATAR</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="media-block">
+                    <p>Media Details</p>
+                    <h6>FAVORITES</h6>
+                    <h6>WATCHLIST</h6>
+                    <h6>WATCHED</h6>
+                </div>
+                <hr>
+                <div class="settings-block">
+                    <p>Settings</p>
+                    <h6>UPDATE PROFILE</h6>
+                    <h6>LOGOUT</h6>
+                </div>
+            </div>
 
-    </div>
-    <div class="profile">
-        <div class="container">
-            <div class="uname mb-5 mt-3" style="font-size: 25px;">
-                <p>Username</p>
-            </div>
-            <!-- <div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary">Movies</button>
-                <button type="button" class="btn btn-secondary">Anime</button>
-                <button type="button" class="btn btn-secondary">Tv Series</button>
-            </div> -->
+            <div class="content-block">
+                <div class="name">
+                    <h1>SAKSHAM's PROFILE</h1>
+                </div>
 
-            <div class="wrapper">
-                <!-- filter Items -->
-                <nav>
-                    <div class="items">
-                        <span class="item active" data-name="all">All</span>
-                        <span class="item" data-name="anime">Anime</span>
-                        <span class="item" data-name="movie">Movies</span>
-                        <span class="item" data-name="tvseries">TV Series</span>
+                <div class="media">
+                    <div class="wrapper">
+                        <!-- filter Items -->
+                        <nav>
+                            <div class="items">
+                                <span class="item active" data-name="all">All</span>
+                                <span class="item" data-name="anime">Anime</span>
+                                <span class="item" data-name="movie">Movies</span>
+                                <span class="item" data-name="tvseries">TV Series</span>
+                            </div>
+                        </nav>
+                        <!-- filter Images -->
+                        <div class="gallery">
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="tvseries">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="movie">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="movie">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="movie">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-item" data-name="anime">
+                                <div class="poster">
+                                    <img src="{% static 'images/movie1.jpg' %}" alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p> {{media.rating}} Rated</p>
+                                        <p>Released on {{media.rdate}}</p>
+                                        <!-- <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span>
+                            </div>
+                            <div class="image" data-name="anime"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span></div>
+                            <div class="image" data-name="tvseries"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span>
+                            </div>
+                            <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span>
+                            </div>
+                            <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span></div>
+                            <div class="image" data-name="tvseries"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span>
+                            </div>
+                            <div class="image" data-name="anime"><span><img src="{% static 'images/movie1.jpg' %}"
+                                        alt=""></span></div> -->
+                        </div>
                     </div>
-                </nav>
-                <!-- filter Images -->
-                <div class="gallery">
-                    <div class="image" data-name="anime"><span><img src="{% static 'images/movie1.jpg' %}" alt=""></span>
-                    </div>
-                    <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
-                                alt=""></span>
-                    </div>
-                    <div class="image" data-name="anime"><span><img src="{% static 'images/movie1.jpg' %}"
-                                alt=""></span></div>
-                    <div class="image" data-name="tvseries"><span><img src="{% static 'images/movie1.jpg' %}" alt=""></span>
-                    </div>
-                    <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
-                                alt=""></span>
-                    </div>
-                    <div class="image" data-name="movie"><span><img src="{% static 'images/movie1.jpg' %}"
-                                alt=""></span></div>
-                    <div class="image" data-name="tvseries"><span><img src="{% static 'images/movie1.jpg' %}" alt=""></span>
-                    </div>
-                    <div class="image" data-name="anime"><span><img src="{% static 'images/movie1.jpg' %}"
-                                alt=""></span></div>
                 </div>
             </div>
-            <!-- fullscreen img preview box -->
-            <!-- <div class="preview-box">
-                <div class="details">
-                    <span class="title">Image Category: <p></p></span>
-                    <span class="icon fas fa-times"></span>
-                </div>
-                <div class="image-box"><img src="" alt=""></div>
-            </div>
-            <div class="shadow"></div> -->
-            <!-- <div class="wrapper">
-                <div class="items">
-                    <span class="item">Movies</span>
-                    <span class="item">TV Series</span>
-                    <span class="item">Anime</span>
-                </div>
-            </div> -->
         </div>
     </div>
-</div>
-
 </div>
 {% endblock %}

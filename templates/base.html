@@ -53,12 +53,25 @@
       </ul>
 
       <div class="d-flex align-items-center">
+        {% if not user.is_anonymous %}
+        <a href="{% url 'logout' %}">
+          <button type="button" class="btn btn-link px-3 me-2" style="color: black;">
+            Logout
+          </button>
+        </a>
+        <a href="{% url 'profile' %}">
+          <button type="button" class="btn btn-primary me-3" href="#" style="background-color: black; border-color: black;">
+            My Profile
+          </button>
+        </a>
+        {% else %}
         <button type="button" class="btn btn-link px-3 me-2" data-toggle="modal" data-target="#loginModal" style="color: black;">
           Login
         </button>
         <button type="button" class="btn btn-primary me-3" data-toggle="modal" data-target="#signUpModal" style="background-color: black; border-color: black;">
           Sign up for free
         </button>
+        {% endif %}
       </div>
     </div>
   </nav>
@@ -75,23 +88,24 @@
         </button>
       </div>
       <div class="modal-body">
-            <form>
+            <form action="/login/", method="post">
+              {% csrf_token %}
               <div class="p-2">
 
                 <h6 style="letter-spacing: 1px;">Enter Your Credentials</h6>
-  
+
                 <div class="form-outline mt-4 mb-4">
-                  <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                  <label class="form-label" for="form2Example17">Email address</label>
+                  <input type="username" id="username" name="username" class="form-control form-control-lg" />
+                  <label class="form-label" for="username">Username</label>
                 </div>
   
                 <div class="form-outline mb-4">
-                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                  <label class="form-label" for="form2Example27">Password</label>
+                  <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                  <label class="form-label" for="password">Password</label>
                 </div>
-  
+
                 <div class="pt-1 mb-4">
-                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="button">Login</button>
+                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="submit">Login</button>
                 </div>
   
                 <a class="small text-muted" href="#!">Forgot password?</a>
@@ -118,28 +132,29 @@
         </button>
       </div>
       <div class="modal-body">
-            <form>
+            <form action="/register/", method="post">
+              {% csrf_token %}
               <div class="p-2">
 
                 <h6 style="letter-spacing: 1px;">Enter Your Details</h6>
   
                 <div class="form-outline mt-4 mb-4">
-                  <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                  <label class="form-label" for="form2Example17">Email address</label>
+                  <input type="email" id="user_email" name="email" class="form-control form-control-lg" />
+                  <label class="form-label" for="user_email">Email address</label>
                 </div>
   
                 <div class="form-outline mb-4">
-                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                  <label class="form-label" for="form2Example27">Password</label>
+                  <input type="password" id="password1" name="password1" class="form-control form-control-lg" />
+                  <label class="form-label" for="password1">Password</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                  <label class="form-label" for="form2Example27">Confirm Password</label>
+                  <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
+                  <label class="form-label" for="password2">Confirm Password</label>
                 </div>
   
                 <div class="pt-1 mb-4">
-                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="button">Sign Up</button>
+                  <button class="btn btn-lg btn-block" style="background-color: black; color: #fff;" type="submit">Sign Up</button>
                 </div>
 
                 <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="#loginModal" data-toggle="modal" data-dismiss="modal" style="color: #393f81;">Sign In here</a></p>

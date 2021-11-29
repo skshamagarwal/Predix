@@ -21,14 +21,19 @@
         <div class="details">
             <div class="media-cover">
                 <img src={{media_info.cover}} alt="" class="avatar">
-                {% if media_info.trailer=="Null" %}
+                {% if media_info.trailer == "Null" %}
+                <div class="media-btn">
+                    <button style="background-color: darkgrey;">WATCH TRAILER</button>
+                </div>
+                {% else %}
                 <a style="text-decoration: none;" href={{media_info.trailer}}>
                     <div class="media-btn">
                         <button>WATCH TRAILER</button>
                     </div>
                 </a>
+                {% endif %}
                 <div class="media-btn">
-                    <button>BUY TICKETS</button>
+                    <button style="background-color: darkgrey;">BUY TICKETS</button>
                 </div>
             </div>
 
@@ -40,32 +45,38 @@
                     {% if not user.is_anonymous %}
                     <div class="add-to-profile">
                         <!-- To Favourite -->
-                        <div class="add-to">
-                            <div class="icon">
-                                <i class='bx bx-play'></i>
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watchlist' %}">
+                            <div class="add-to">
+                                <div class="icon">
+                                    <i class='bx bx-play'></i>
+                                </div>
+                                <p class="text">
+                                    Add to Watch List
+                                </p>
                             </div>
-                            <p class="text">
-                                Add to Watch List
-                            </p>
-                        </div>
+                        </a>
                         <!-- To Watch List -->
-                        <div class="add-to">
-                            <div class="icon">
-                                <i class='bx bxs-heart'></i>
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'favourite' %}">
+                            <div class="add-to">
+                                <div class="icon">
+                                    <i class='bx bxs-heart'></i>
+                                </div>
+                                <p class="text">
+                                    Add to Favourite
+                                </p>
                             </div>
-                            <p class="text">
-                                Add to Favourite
-                            </p>
-                        </div>
+                        </a>
                         <!-- To Watched -->
-                        <div class="add-to">
-                            <div class="icon">
-                                <i class='bx bx-check-double'></i>
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watched' %}">
+                            <div class="add-to">
+                                <div class="icon">
+                                    <i class='bx bx-check-double'></i>
+                                </div>
+                                <p class="text">
+                                    Add to Watched
+                                </p>
                             </div>
-                            <p class="text">
-                                Add to Watched
-                            </p>
-                        </div>
+                        </a>
                     </div>
                     {% endif %}
                 </div>

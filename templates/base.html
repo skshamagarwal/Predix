@@ -37,11 +37,11 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'dashboard' 'movie' %}">Movies</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'dashboard' 'tvseries' %}">TV Series</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'tv series' %}">TV Series</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'dashboard' 'anime' %}">Anime</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'dashboard' 'manga' %}">TV Series</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'manga' %}">Manga</a>
           </div>
         </li>
         <!-- <li class="nav-item">
@@ -59,7 +59,7 @@
             Logout
           </button>
         </a>
-        <a href="{% url 'profile' %}">
+        <a href="{% url 'profile' 'favourite' %}">
           <button type="button" class="btn btn-primary me-3" href="#" style="background-color: black; border-color: black;">
             My Profile
           </button>

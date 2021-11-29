@@ -22,3 +22,11 @@ class Media(models.Model):
     
     def __str__(self) -> str:
         return self.title  
+    
+
+class UserMedia(models.Model):
+    mid = models.ForeignKey(Media, on_delete=CASCADE)
+    uid = models.ForeignKey(User, on_delete=CASCADE, null=True, blank=True)
+    filter = models.CharField(max_length=20, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()  

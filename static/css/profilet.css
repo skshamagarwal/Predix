@@ -153,8 +153,8 @@
   justify-content: space-between;
 }
 .items span {
-  padding: 7px 25px;
-  font-size: 18px;
+  padding: 7px 18px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   color: #da1515;
@@ -233,6 +233,12 @@
 }
 .d-text h3 {
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .divider {
   border-top: 2px solid #bbb;
@@ -240,6 +246,12 @@
 }
 .d-text p {
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .list-item:hover .description {

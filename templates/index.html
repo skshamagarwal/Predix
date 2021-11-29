@@ -22,6 +22,7 @@
         <a href="{% url 'dashboard' 'movie' %}">Get Started</a>
     </div>
 </section>
+
 {% for message in messages %}
 <h3>{{message}}</h3>
 {% endfor %}
@@ -82,8 +83,7 @@
         Please do not hesitate to contact us directly. Our team will come back
         to you within a matter of hours to help you.</p>
 
-    <div class="contact-parent">
-        <div class="contact">
+        <div class="container">
             <form id="contact-form" name="contact-form" action="mail.php" method="POST">
                 <div class="row">
                     <div class="col-md-6">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form mb-0">
+                        <div class="md-form">
                             <input type="text" id="email" name="email" class="form-control">
                             <label for="email" class="">Your email</label>
                         </div>
@@ -120,7 +120,6 @@
             <div class="text-center text-md-left" style="padding-top: 10px;">
                 <a href="#">Send</a>
             </div>
-        </div>
     </div>
 </section>
 

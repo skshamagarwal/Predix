@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import Media, UserMedia
 import random
@@ -17,7 +18,7 @@ def dashboard(request, media_type):
     media_list = list(Media.objects.filter(type=media_type))[:20]
     
     # Recommendations
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and media_type=="movie":
         user_movies = UserMedia.objects.all()
         if len(list(user_movies))>1:
             mid_list = []
@@ -32,10 +33,16 @@ def dashboard(request, media_type):
         recommendation = media_list[:]
     
     # Trending List - Current media type and current year, sorted by their ranking(accending)
-    trending = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('ranking'))[:20] 
+    if media_type=="anime" or media_type=="manga":
+        trending = list(Media.objects.filter(type=media_type).order_by('ranking'))[:20] 
+    else:
+        trending = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('ranking'))[:20] 
     
     # Latest Releases - Current Year, Sorted by release date (descending)
-    latest = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('-rdate'))
+    if media_type=="anime" or media_type=="manga":
+        latest = list(Media.objects.filter(type=media_type).order_by('-rdate'))
+    else:
+        latest = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('-rdate'))
     
     # Genre and Language
     genre = media_list[:]
@@ -82,7 +89,7 @@ def addMedia(request, mid, to):
     media = Media.objects.get(mid=mid)
     obj = UserMedia.objects.create(uid=user_id, mid=media, filter=to)
     obj.save()
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 # Accounts
@@ -102,12 +109,10 @@ def register(request):
         else:
             user = User.objects.create_user(username=username, password=password1, email=email)
             user.save()
-            messages.info(request, 'User Created')
-        
     else:
-        messages.info(request,'Password and Confirm Password is not matching.')
-        return redirect('/')
-    return redirect('/')
+        messages.info(request,'Password and Confirm Password is not matching. Try Again')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def login(request):
@@ -119,11 +124,10 @@ def login(request):
     if user is not None:
         auth.login(request, user)
         messages.info(request, 'Logged In')
-        return redirect('/')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     else:
-        messages.info(request, 'Invalid Credentials')
-        return redirect('/')
-    # return redirect('/')
+        messages.info(request, 'Invalid Credentials, Try Again')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     
 def logout(request):
     auth.logout(request)

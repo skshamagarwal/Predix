@@ -25,7 +25,7 @@ a {
   height: 60vh;
   overflow: hidden;
   object-fit: cover;
-  filter: brightness(30%);
+  filter: brightness(20%);
 }
 
 .details {

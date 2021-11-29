@@ -16,8 +16,10 @@
 
 {% load extras %}
 <div class="main">
-    <div class="cover">
-        <img src="{% static 'images/upcoming_check.jpg' %}" alt="">
+    <div class="cover" style="filter: brightness(40%);">
+        {% with "images/landscapes/1.jpg,images/landscapes/2.jpg,images/landscapes/3.jpg,images/landscapes/4.jpg,images/landscapes/5.jpg,images/landscapes/6.jpg,images/landscapes/7.jpg,images/landscapes/8.jpg,images/landscapes/9.jpg,images/landscapes/10.jpg"|random as image %}
+        <img src="{% static image %}" alt="">
+        {% endwith %}
     </div>
     <div class="container">
         <div class="details">
@@ -96,7 +98,7 @@
                         <div class="gallery">
                             {% for media in mylist %}
                             <div class="list-item" data-name={{media.mid.type}}>
-                                <a href="">
+                                <a style="text-decoration: none;" href="{% url 'media_page' media.mid.mid %}">
                                     <div class="poster">
                                         <img src={{media.mid.cover}} alt="">
                                     </div>

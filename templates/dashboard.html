@@ -80,7 +80,7 @@
                         </ul>
                     </div>
                     <div class="list-wrapper">
-                        {% for media in media_list %}
+                        {% for media in genre_list %}
                         <div class="list-item" data-filter="Horror">
                             <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
                                 <div class="poster">
@@ -160,7 +160,7 @@
                         </ul>
                     </div>
                     <div class="list-wrapper">
-                        {% for media in media_list %}
+                        {% for media in language_list %}
                         <div class="list-item" data-filter="Hindi">
                             <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
                                 <div class="poster">
@@ -239,29 +239,25 @@
                             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active" data-interval="4000">
-                                <img src="{% static 'images/upcoming_check.jpg' %}" class="d-block w-100">
+                            <div class="carousel-item" style="height: 80vh;width: 100%;object-fit: cover;" data-interval="4000">
+                                <img style="filter: brightness(60%);" src="{% static 'images/landscapes/8.jpg' %}" class="d-block w-100">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">First slide label</h5>
-                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Nulla vitae elit libero, a pharetra
-                                        auguemollis interdum.</p>
+                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Schindler's List</h5>
+                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</p>
                                 </div>
                             </div>
-                            <div class="carousel-item" data-interval="4000">
-                                <img src="{% static 'images/upcoming_check.jpg' %}" class="d-block w-100">
+                            <div class="carousel-item active" style="height: 80vh;width: 100%;object-fit: cover;" data-interval="4000">
+                                <img style="filter: brightness(60%);" src="{% static 'images/landscapes/3.jpg' %}" class="d-block w-100">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">First slide label</h5>
-                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Nulla vitae elit libero, a pharetra
-                                        auguemollis interdum.</p>
+                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Princess Mononoke</h5>
+                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">On a journey to find the cure for a Tatarigami's curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.</p>
                                 </div>
                             </div>
-                            <div class="carousel-item" data-interval="4000">
-                                <img src="{% static 'images/upcoming_check.jpg' %}" class="d-block w-100">
+                            <div class="carousel-item" style="height: 80vh;width: 100%;object-fit: cover;" data-interval="4000">
+                                <img style="filter: brightness(60%);" src="{% static 'images/landscapes/9.jpg' %}" class="d-block w-100">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">First slide label</h5>
-                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Nulla vitae elit libero, a pharetra
-                                        augue
-                                        mollis interdum.</p>
+                                    <h5 style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">Goodfellas</h5>
+                                    <p style="text-shadow: rgb(0, 0, 0) 1px 0 4px;">The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.</p>
                                 </div>
                             </div>
                         </div>

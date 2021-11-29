@@ -32,6 +32,9 @@ def profile(request):
     object = {}
     return render(request, 'profile.html', object)
 
+
+
+# Accounts
 def register(request):
     
     # Change Redirects and messages - pending

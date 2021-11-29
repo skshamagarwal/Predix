@@ -69,7 +69,6 @@ a {
   transition-property: transform;
   margin-bottom: 10px;
   cursor: pointer;
-
 }
 .media-btn button {
   color: #fff;
@@ -177,8 +176,9 @@ a {
   margin: 0;
 }
 .bullets .point .key {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .bullets .point .val {
-    color: #fff;
+  text-transform: capitalize;
+  color: #fff;
 }

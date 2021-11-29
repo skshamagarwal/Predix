@@ -21,7 +21,8 @@
         <div class="details">
             <div class="media-cover">
                 <img src={{media_info.cover}} alt="" class="avatar">
-                <a href={{media_info.trailer}}>
+                {% if media_info.trailer=="Null" %}
+                <a style="text-decoration: none;" href={{media_info.trailer}}>
                     <div class="media-btn">
                         <button>WATCH TRAILER</button>
                     </div>
@@ -36,6 +37,7 @@
                     <div class="media-name">
                         <h1>{{media_info.title}}</h1>
                     </div>
+                    {% if not user.is_anonymous %}
                     <div class="add-to-profile">
                         <!-- To Favourite -->
                         <div class="add-to">
@@ -65,6 +67,7 @@
                             </p>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="description">
                     <h1>Overview</h1>
@@ -73,7 +76,7 @@
 
                     <div class="bullets">
                         <div class="point">
-                            <p class="key">Released On: </p>
+                            <p class="key">Release: </p>
                             <p class="val">{{media_info.rdate}}</p>
                         </div>
                         <div class="point">

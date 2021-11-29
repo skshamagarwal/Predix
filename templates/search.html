@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} {{media_info.title}} {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/search.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+{% load extras %}
+<div class="main">
+    <div class="container" style="margin-bottom: 40px; color: #fff;">
+        <h2 style="margin-top: 100px">Search Results for "{{query}}"</h2>
+        <hr class="underline">
+        <div class="wrapper">
+            <!-- filter Items -->
+            <nav>
+              <div class="items">
+                <span class="item active" data-name="all">All</span>
+                <span class="item" data-name="movie">Movies</span>
+                <span class="item" data-name="tvseries">TV Series</span>
+                <span class="item" data-name="anime">Anime</span>
+                <span class="item" data-name="manga">Manga</span>
+              </div>
+            </nav>
+            <!-- filter Images -->
+            <div class="gallery">
+                {% for media in media_list %}
+                <div class="list-item" data-name={{media.type|cut:" "}}>
+                    <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                        <div class="poster">
+                            <img src={{media.cover}} alt="">
+                        </div>
+                        <div class="description">
+                            <div class="d-text">
+                                <h3>{{media.title}}</h3>
+                                <hr class="divider">
+                                <p>{{media.rdate}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% if not user.is_anonymous %}
+                    <div class="btns" style="z-index: 100;">
+                        <ul>
+                            <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                            <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                            <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+            
+        </div>
+
+    </div>
+</div>
+</div>
+{% endblock %}

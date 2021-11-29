@@ -90,14 +90,14 @@
                                 <span class="item active" data-name="all">All</span>
                                 <span class="item" data-name="anime">Anime</span>
                                 <span class="item" data-name="movie">Movies</span>
-                                <span class="item" data-name="tv series">TV Series</span>
+                                <span class="item" data-name="tvseries">TV Series</span>
                                 <span class="item" data-name="manga">Manga</span>
                             </div>
                         </nav>
                         <!-- filter Images -->
                         <div class="gallery">
                             {% for media in mylist %}
-                            <div class="list-item" data-name={{media.mid.type}}>
+                            <div class="list-item" data-name={{media.mid.type|cut:" "}}>
                                 <a style="text-decoration: none;" href="{% url 'media_page' media.mid.mid %}">
                                     <div class="poster">
                                         <img src={{media.mid.cover}} alt="">

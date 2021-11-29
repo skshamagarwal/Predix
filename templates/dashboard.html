@@ -20,10 +20,9 @@
                 <p> {{media_type|cut:" " }} </p>
             </div>
         </div>
-        <form action="">
-            <input type="search" placeholder="Search Your Favourites">
-            <i class="fa fa-search"></i>
-            <!-- <i class='bx bx-search-alt'></i> -->
+        <form action="{% url 'search' %}" method="get">
+            <input type="search" name="query" placeholder="Search Your Favourites">
+            <i type='submit' class="fa fa-search"></i>
         </form>
     </section>
 
@@ -52,9 +51,9 @@
                         {% if not user.is_anonymous %}
                         <div class="btns" style="z-index: 100;">
                             <ul>
-                                <a href="{% url 'addMedia' media.mid 'watchlist' %}"><i class='bx bx-play'></i></a>
-                                <a href="{% url 'addMedia' media.mid 'watched' %}"><i class='bx bx-check-double'></i></a>
-                                <a href="{% url 'addMedia' media.mid 'favourite' %}"><i class='bx bxs-heart'></i></a>
+                                <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                                <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                                <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
                             </ul>
                         </div>
                         {% endif %}
@@ -97,9 +96,9 @@
                             {% if not user.is_anonymous %}
                             <div class="btns" style="z-index: 100;">
                                 <ul>
-                                    <a href="{% url 'addMedia' media.mid 'watchlist' %}"><i class='bx bx-play'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'watched' %}"><i class='bx bx-check-double'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'favourite' %}"><i class='bx bxs-heart'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
                                 </ul>
                             </div>
                             {% endif %}
@@ -137,9 +136,9 @@
                             {% if not user.is_anonymous %}
                             <div class="side" style="z-index: 100;">
                                 <ul>
-                                    <a href="{% url 'addMedia' media.mid 'watchlist' %}"><i class='bx bx-play'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'watched' %}"><i class='bx bx-check-double'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'favourite' %}"><i class='bx bxs-heart'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
                                 </ul>
                             </div>
                             {% endif %}
@@ -177,9 +176,9 @@
                             {% if not user.is_anonymous %}
                             <div class="btns" style="z-index: 100;">
                                 <ul>
-                                    <a href="{% url 'addMedia' media.mid 'watchlist' %}"><i class='bx bx-play'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'watched' %}"><i class='bx bx-check-double'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'favourite' %}"><i class='bx bxs-heart'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
                                 </ul>
                             </div>
                             {% endif %}
@@ -215,9 +214,9 @@
                             {% if not user.is_anonymous %}
                             <div class="side" style="z-index: 100;">
                                 <ul>
-                                    <a href="{% url 'addMedia' media.mid 'watchlist' %}"><i class='bx bx-play'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'watched' %}"><i class='bx bx-check-double'></i></a>
-                                    <a href="{% url 'addMedia' media.mid 'favourite' %}"><i class='bx bxs-heart'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watchlist' media.type %}"><i class='bx bx-play'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'watched' media.type %}"><i class='bx bx-check-double'></i></a>
+                                    <a href="{% url 'addMedia' media.mid 'favourite' media.type %}"><i class='bx bxs-heart'></i></a>
                                 </ul>
                             </div>
                             {% endif %}

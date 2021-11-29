@@ -7,11 +7,15 @@ from home import views as home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('', home.index),
     path('dashboard/<str:media_type>/', home.dashboard, name='dashboard'),
     path('profile/<str:filter>', home.profile, name='profile'),
     path('media/<str:id>', home.mediaPage, name='media_page'),
-    path('add/<str:mid>/<str:to>', home.addMedia, name='addMedia'),
+    
+    path('add/<str:mid>/<str:to>/<str:type>', home.addMedia, name='addMedia'),
+    path('search/', home.search, name='search'),
+    
     path('register/', home.register, name='register'),
     path('login/', home.login, name='login'),
     path('logout/', home.logout, name='logout'),

@@ -48,7 +48,7 @@
                     {% if not user.is_anonymous %}
                     <div class="add-to-profile">
                         <!-- To Favourite -->
-                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watchlist' %}">
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watchlist' media_info.type %}">
                             <div class="add-to">
                                 <div class="icon">
                                     <i class='bx bx-play'></i>
@@ -59,7 +59,7 @@
                             </div>
                         </a>
                         <!-- To Watch List -->
-                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'favourite' %}">
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'favourite' media_info.type %}">
                             <div class="add-to">
                                 <div class="icon">
                                     <i class='bx bxs-heart'></i>
@@ -70,7 +70,7 @@
                             </div>
                         </a>
                         <!-- To Watched -->
-                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watched' %}">
+                        <a style="text-decoration: none;" href="{% url 'addMedia' media_info.mid 'watched' media_info.type %}">
                             <div class="add-to">
                                 <div class="icon">
                                     <i class='bx bx-check-double'></i>

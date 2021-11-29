@@ -13,19 +13,17 @@ def index(request):
 
 def dashboard(request, media_type):
     
-    # mymovies = list(MyMovies.objects.all().values_list('mid', flat=True))
-    # movies = list(Movies.objects.all().filter(mid__isnull=False).filter(cover__isnull=False).exclude(mid__in=mymovies))
     media_list = list(Media.objects.filter(type=media_type))[:20]
     
     # Recommendations
-    if request.user.is_authenticated and media_type=="movie":
-        user_movies = UserMedia.objects.all()
-        if len(list(user_movies))>1:
-            mid_list = []
-            for ob in user_movies:
-                if ob.mid.type == media_type:
-                    mid_list.append(ob.mid.mid)
-            recommended = recc(mid_list)
+    if request.user.is_authenticated:
+        user_media = UserMedia.objects.all()
+        mid_list = []
+        for ob in user_media:
+            if ob.mid.type == media_type:
+                mid_list.append(ob.mid.mid)
+        if len(mid_list)>1:
+            recommended = recc(mid_list, media_type)
             recommendation = list(Media.objects.filter(mid__in=recommended))
         else:
             recommendation = media_list[:]
@@ -83,20 +81,35 @@ def profile(request, filter):
 
 
 # User Add Media
-def addMedia(request, mid, to):
+def addMedia(request, mid, to, type):
     uid = request.user.id
     user_id = User.objects.get(id=uid)
-    media = Media.objects.get(mid=mid)
+    media = Media.objects.filter(type=type).get(mid=mid)
     obj = UserMedia.objects.create(uid=user_id, mid=media, filter=to)
     obj.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+# Search Results
+def search(request):
+    text = request.GET['query']    
+    
+    media_list = list(Media.objects.all())
+    random.shuffle(media_list)
+
+    if request.user.is_authenticated:
+        user_media = UserMedia.objects.all()
+        mid_list = []
+        for ob in user_media:
+            mid_list.append(ob.mid.mid)
+        obj = Media.objects.filter(title__icontains=text).exclude(mid__in=mid_list)
+    else:
+        obj = Media.objects.filter(title__icontains=text)[:50]
+    object={'media_list': media_list[:100], 'query': text}
+    return render(request, 'search.html', object)
+
 
 # Accounts
 def register(request):
-    
-    # Change Redirects and messages - pending
-    
     email = request.POST['email']
     password1 = request.POST['password1']
     password2 = request.POST['password2']
@@ -111,7 +124,7 @@ def register(request):
             user.save()
     else:
         messages.info(request,'Password and Confirm Password is not matching. Try Again')
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 

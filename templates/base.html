@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'dashboard' 'movies' %}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'dashboard' 'movie' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -35,7 +35,7 @@
             Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'dashboard' 'movies' %}">Movies</a>
+            <a class="dropdown-item" href="{% url 'dashboard' 'movie' %}">Movies</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'dashboard' 'tvseries' %}">TV Series</a>
             <div class="dropdown-divider"></div>
@@ -54,7 +54,7 @@
 
       <div class="d-flex align-items-center">
         {% if not user.is_anonymous %}
-        <a href="{% url 'logout' %}">
+        <a style="text-decoration: none;" href="{% url 'logout' %}">
           <button type="button" class="btn btn-link px-3 me-2" style="color: black;">
             Logout
           </button>
@@ -198,7 +198,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'dashboard' 'movies' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'dashboard' 'movie' %}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#cta">Contribute</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/#contact">Contact Us</a></li>

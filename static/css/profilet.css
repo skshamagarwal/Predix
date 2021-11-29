@@ -6,7 +6,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 .main {
   background-color: #000000ea;
   position: relative;
@@ -174,8 +173,6 @@
   margin-top: 30px;
 }
 
-
-
 .list-item {
   padding: 4px;
   position: relative;
@@ -183,25 +180,25 @@
   margin: 0 5px;
   margin-bottom: 10px;
 }
-.gallery .list-item.hide{
+.gallery .list-item.hide {
   display: none;
 }
-.gallery .list-item.show{
+.gallery .list-item.show {
   animation: animate 0.4s ease;
 }
 @keyframes animate {
-  0%{
+  0% {
     transform: scale(0.5);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
 
 .list-item img {
   border-radius: 5px;
-  width: calc(190px*0.71);
-  height: calc(300px*0.71);
+  width: calc(190px * 0.71);
+  height: calc(300px * 0.71);
   object-fit: cover;
 }
 

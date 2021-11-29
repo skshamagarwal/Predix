@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from .models import Media
 import random
+from datetime import date
 
 
 def index(request):
@@ -10,15 +11,32 @@ def index(request):
 
 def dashboard(request, media_type):
     
-    # Recommendations
+    # mymovies = list(MyMovies.objects.all().values_list('mid', flat=True))
+    # movies = list(Movies.objects.all().filter(mid__isnull=False).filter(cover__isnull=False).exclude(mid__in=mymovies))
+    media_list = list(Media.objects.filter(type=media_type))
     
-    # Media
-    media_list = list(Media.objects.all())    
+    # Recommendations
+    recommendation = media_list[:20]
+    
+    # Trending List - Current media type and current year, sorted by their ranking(accending)
+    trending = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('ranking')) 
+    
+    # Latest Releases
+    latest = list(Media.objects.order_by('-year'))[:20]
+    
+    # Genre and Language
+    genre = media_list[:]
+    language = media_list[:]
+    
+    # Shuffle
     random.shuffle(media_list)
+    random.shuffle(genre)
+    random.shuffle(language)
+    random.shuffle(recommendation)
     
     obj = {'media_type': media_type.upper(), 'media_list': media_list, 
-              "recommendation_list": media_list, "trending_list": media_list, 
-              "latest_list": media_list, "upcoming_list": media_list}
+              "recommendation_list": recommendation, "trending_list": trending, 
+              "latest_list": latest}
     
     return render(request, 'dashboard.html', obj)
 

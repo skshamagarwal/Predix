@@ -36,8 +36,8 @@
                 </div>
                 <div class="list-wrapper">
                     {% for media in recommendation_list %}
-                    <a href="{% url 'media_page' media.mid %}">
-                        <div class="list-item" >
+                    <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                        <div class="list-item">
                             <div class="poster">
                                 <img src={{media.cover}} alt="">
                             </div>
@@ -45,15 +45,17 @@
                                 <div class="d-text">
                                     <h3>{{media.title}}</h3>
                                     <hr class="divider">
-                                    <p>Released on {{media.rdate}}</p>
+                                    <p>{{media.rdate}}</p>
+                                    {% if not user.is_anonymous %}
                                     <div class="btns">
                                         <button type="submit"><i class='bx bx-play'
                                                 style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
                                         <button type="submit"><i class='bx bx-check-double'
                                                 style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
                                         <button type="submit"><i class="bx bxs-heart"
-                                            style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                                style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -80,26 +82,30 @@
                     </div>
                     <div class="list-wrapper">
                         {% for media in media_list %}
-                        <div class="list-item" data-filter="Horror">
-                            <div class="poster">
-                                <img src={{media.cover}} alt="">
-                            </div>
-                            <div class="description">
-                                <div class="d-text">
-                                    <h3>{{media.title}}</h3>
-                                    <hr class="divider">
-                                    <p>Released on {{media.rdate}}</p>
-                                    <div class="btns">
-                                        <button type="submit"><i class='bx bx-play'
-                                                style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
-                                        <button type="submit"><i class='bx bx-check-double'
-                                                style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
-                                        <button type="submit"><i class="bx bxs-heart"
-                                                style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                        <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                            <div class="list-item" data-filter="Horror">
+                                <div class="poster">
+                                    <img src={{media.cover}} alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p>{{media.rdate}}</p>
+                                        {% if not user.is_anonymous %}
+                                        <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
@@ -112,34 +118,39 @@
                     </div>
                     <div class="media-wrapper" style="overflow-y: auto;">
                         {% for media in trending_list %}
-                        <div class="media-info-card">
-                            <div class="cover-img">
-                                <img src={{media.cover}} alt="">
-                            </div>
-                            <div class="media-details">
-                                <div class="info">
-                                    <div class="icon-text"><span class="text">{{media.rdate}}</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">|</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">4.5</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">|</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">#1</span>
-                                    </div>
+
+                        <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                            <div class="media-info-card">
+                                <div class="cover-img">
+                                    <img src={{media.cover}} alt="">
                                 </div>
-                                <h2 class="media-name">{{media.title}}</h2>
-                                <div class="side-btns">
-                                    <button type="submit"><i class='bx bx-play'
-                                            style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
-                                    <button type="submit"><i class='bx bx-check-double'
-                                            style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
-                                    <button type="submit"><i class="bx bxs-heart"
-                                            style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                <div class="media-details">
+                                    <div class="info">
+                                        <div class="icon-text"><span class="text">{{media.rdate}}</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">|</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">4.5</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">|</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">#1</span>
+                                        </div>
+                                    </div>
+                                    <h2 class="media-name">{{media.title}}</h2>
+                                    {% if not user.is_anonymous %}
+                                    <div class="side-btns">
+                                        <button type="submit"><i class='bx bx-play'
+                                                style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                        <button type="submit"><i class='bx bx-check-double'
+                                                style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                        <button type="submit"><i class="bx bxs-heart"
+                                                style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
@@ -157,26 +168,30 @@
                     </div>
                     <div class="list-wrapper">
                         {% for media in media_list %}
-                        <div class="list-item" data-filter="Hindi">
-                            <div class="poster">
-                                <img src={{media.cover}} alt="">
-                            </div>
-                            <div class="description">
-                                <div class="d-text">
-                                    <h3>{{media.title}}</h3>
-                                    <hr class="divider">
-                                    <p>Released on {{media.rdate}}</p>
-                                    <div class="btns">
-                                        <button type="submit"><i class='bx bx-play'
-                                                style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
-                                        <button type="submit"><i class='bx bx-check-double'
-                                                style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
-                                        <button type="submit"><i class="bx bxs-heart"
-                                                style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                        <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                            <div class="list-item" data-filter="Hindi">
+                                <div class="poster">
+                                    <img src={{media.cover}} alt="">
+                                </div>
+                                <div class="description">
+                                    <div class="d-text">
+                                        <h3>{{media.title}}</h3>
+                                        <hr class="divider">
+                                        <p>{{media.rdate}}</p>
+                                        {% if not user.is_anonymous %}
+                                        <div class="btns">
+                                            <button type="submit"><i class='bx bx-play'
+                                                    style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                            <button type="submit"><i class='bx bx-check-double'
+                                                    style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                            <button type="submit"><i class="bx bxs-heart"
+                                                    style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
@@ -188,34 +203,39 @@
                     </div>
                     <div class="media-wrapper" style="overflow-y: auto;">
                         {% for media in latest_list %}
-                        <div class="media-info-card">
-                            <div class="cover-img">
-                                <img src={{media.cover}} alt="">
-                            </div>
-                            <div class="media-details">
-                                <div class="info">
-                                    <div class="icon-text"><span class="text">{{media.rdate}}</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">|</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">{{media.rating}}</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">|</span>
-                                    </div>
-                                    <div class="icon-text"><span class="text">#1</span>
-                                    </div>
+
+                        <a style="text-decoration: none;" href="{% url 'media_page' media.mid %}">
+                            <div class="media-info-card">
+                                <div class="cover-img">
+                                    <img src={{media.cover}} alt="">
                                 </div>
-                                <h2 class="media-name">{{media.title}}</h2>
-                                <div class="side-btns">
-                                    <button type="submit"><i class='bx bx-play'
-                                            style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
-                                    <button type="submit"><i class='bx bx-check-double'
-                                            style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
-                                    <button type="submit"><i class="bx bxs-heart"
-                                            style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                <div class="media-details">
+                                    <div class="info">
+                                        <div class="icon-text"><span class="text">{{media.rdate}}</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">|</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">{{media.rating}}</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">|</span>
+                                        </div>
+                                        <div class="icon-text"><span class="text">#1</span>
+                                        </div>
+                                    </div>
+                                    <h2 class="media-name">{{media.title}}</h2>
+                                    {% if not user.is_anonymous %}
+                                    <div class="side-btns">
+                                        <button type="submit"><i class='bx bx-play'
+                                                style="color: green; text-shadow: 0px 0px 8px green;"></i></button>
+                                        <button type="submit"><i class='bx bx-check-double'
+                                                style="color: blue; text-shadow: 0px 0px 8px blue;"></i></button>
+                                        <button type="submit"><i class="bx bxs-heart"
+                                                style="color: rgb(255, 0, 0); text-shadow: 0px 0px 8px #ff0000;"></i></button>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>

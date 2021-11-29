@@ -29,15 +29,25 @@
                 <hr>
                 <div class="media-block">
                     <p>Media Details</p>
-                    <h6>FAVORITES</h6>
-                    <h6>WATCHLIST</h6>
-                    <h6>WATCHED</h6>
+                    <a style="text-decoration: none;" href="{% url 'logout' %}">
+                        <h6>FAVORITES</h6>
+                    </a>
+                    <a style="text-decoration: none;" href="{% url 'logout' %}">
+                        <h6>WATCHLIST</h6>
+                    </a>
+                    <a style="text-decoration: none;" href="{% url 'logout' %}">
+                        <h6>WATCHED</h6>
+                    </a>
                 </div>
                 <hr>
                 <div class="settings-block">
                     <p>Settings</p>
-                    <h6>UPDATE PROFILE</h6>
-                    <h6>LOGOUT</h6>
+                    <a style="text-decoration: none;" href="{% url 'logout' %}">
+                        <h6>UPDATE PROFILE</h6>
+                    </a>
+                    <a style="text-decoration: none;" href="{% url 'logout' %}">
+                        <h6>LOGOUT</h6>
+                    </a>
                 </div>
             </div>
 

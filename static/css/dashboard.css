@@ -6,7 +6,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 .main {
   background-color: #000000ea;
   position: relative;
@@ -169,8 +168,8 @@
 .recommendation .list-item img {
   box-shadow: 0 0 5px 0 #858585ea;
   border-radius: 5px;
-  width: calc(190px*0.93);
-  height: calc(300px*0.93);
+  width: calc(190px * 0.93);
+  height: calc(300px * 0.93);
   object-fit: cover;
 }
 
@@ -205,6 +204,12 @@
 }
 .d-text h3 {
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .divider {
   border-top: 2px solid #bbb;
@@ -238,7 +243,7 @@
   width: 30px;
   border-radius: 50%;
   background-color: #fff;
-  
+
   transition-duration: 0.4s;
   transition-property: transform;
 }

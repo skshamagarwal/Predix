@@ -13,6 +13,8 @@
 {% endblock %}
 
 {% block body %}
+
+{% load extras %}
 <div class="main">
     <div class="cover">
         <img src="{% static 'images/upcoming_check.jpg' %}" alt="">
@@ -21,9 +23,11 @@
         <div class="details">
             <div class="profile-block">
                 <div class="avatar-block">
-                    <img src="{% static 'images/movie1.jpg' %}" alt="" class="avatar">
+                    {% with "images/dp/1.jpg,images/dp/2.jpg,images/dp/3.jpg,images/dp/4.jpg,images/dp/5.jpg,images/dp/6.jpg,images/dp/7.jpg,images/dp/8.jpg,images/dp/9.jpg,images/dp/10.jpg,images/dp/11.jpg,images/dp/12.jpg,images/dp/13.jpg"|random as image %}
+                    <img id="myPicture" src="{% static image %}" alt="" class="avatar">
+                    {% endwith %}
                     <div class="change-avatar">
-                        <button>CHANGE AVATAR</button>
+                        <button onClick="window.location.href=window.location.href">CHANGE AVATAR</button>
                     </div>
                 </div>
                 <hr>

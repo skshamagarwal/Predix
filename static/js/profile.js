@@ -25,3 +25,11 @@ window.onload = () => { //after window loaded
         filterImg[i].setAttribute("onclick", ""); //adding onclick attribute in all available images
     }
 }
+
+
+
+var myPix = new Array("{% static 'images/dp/1.jpg' %}", "{% static 'images/dp/2.jpg' %}", "{% static 'images/dp/3.jpg' %}", "{% static 'images/dp/4.jpg' %}", "{% static 'images/dp/5.jpg' %}", "{% static 'images/dp/6.jpg' %}", "{% static 'images/dp/7.jpg' %}", "{% static 'images/dp/8.jpg' %}", "{% static 'images/dp/9.jpg' %}", "{% static 'images/dp/10.jpg' %}", "{% static 'images/dp/11.jpg' %}", "{% static 'images/dp/12.jpg' %}", "{% static 'images/dp/13.jpg' %}");
+function choosePic(){
+    var randomNum = Math.floor(Math.random() * myPix.length);
+    document.getElementById("myPicture").src = myPix[randomNum];
+}

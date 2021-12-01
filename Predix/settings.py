@@ -66,10 +66,16 @@ WSGI_APPLICATION = 'Predix.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'PredixDB',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'PredixDB',
+#     }
+# }
 
 
 # Password validation

@@ -1,1 +1,1 @@
-web: gunicorn Predix.wsgi --log-file -
+web: gunicorn Predix.wsgi

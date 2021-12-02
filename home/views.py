@@ -91,11 +91,7 @@ def addMedia(request, mid, to, type):
 
 # Search Results
 def search(request):
-    text = request.GET['query']    
-    
-    media_list = list(Media.objects.all())
-    random.shuffle(media_list)
-
+    text = request.GET['query']
     if request.user.is_authenticated:
         user_media = UserMedia.objects.all()
         mid_list = []
@@ -104,7 +100,7 @@ def search(request):
         obj = Media.objects.filter(title__icontains=text).exclude(mid__in=mid_list)
     else:
         obj = Media.objects.filter(title__icontains=text)[:50]
-    object={'media_list': media_list[:100], 'query': text}
+    object={'media_list': obj[:100], 'query': text}
     return render(request, 'search.html', object)
 
 

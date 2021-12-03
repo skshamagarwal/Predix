@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jhv94!t8$y^tei)&n#9v6qwk1%ldnfex*o#61z-uxk6v^$4jca'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['predixdb.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

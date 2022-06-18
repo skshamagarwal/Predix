@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -65,12 +65,17 @@ WSGI_APPLICATION = 'Predix.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+        'default': {
         'ENGINE': 'djongo',
-        'NAME': 'PredixDB',
+        'NAME': 'PredixWeb',
+        'CLIENT': {
+            'host': 'mongodb+srv://root:root@cluster0.mgmti.mongodb.net/test',
+            'username': 'root',
+            'password': 'root',
+            'authMechanism': 'SCRAM-SHA-1'
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

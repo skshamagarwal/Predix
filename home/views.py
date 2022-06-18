@@ -16,31 +16,40 @@ def dashboard(request, media_type):
     media_list = list(Media.objects.filter(type=media_type))[:20]
     
     # Recommendations
-    if request.user.is_authenticated:
-        user_media = UserMedia.objects.all()
-        mid_list = []
-        for ob in user_media:
-            if ob.mid.type == media_type:
-                mid_list.append(ob.mid.mid)
-        if len(mid_list)>1:
-            recommended = recc(mid_list, media_type)
-            recommendation = list(Media.objects.filter(mid__in=recommended))
+    try:
+        if request.user.is_authenticated:
+            user_media = UserMedia.objects.all()
+            mid_list = []
+            for ob in user_media:
+                if ob.mid.type == media_type:
+                    mid_list.append(ob.mid.mid)
+            if len(mid_list)>1:
+                recommended = recc(mid_list, media_type)
+                recommendation = list(Media.objects.filter(mid__in=recommended))
+            else:
+                recommendation = media_list[:]
         else:
             recommendation = media_list[:]
-    else:
-        recommendation = media_list[:]
+    except Exception as e:
+        print(str(e))
     
     # Trending List - Current media type and current year, sorted by their ranking(accending)
-    if media_type=="anime" or media_type=="manga":
-        trending = list(Media.objects.filter(type=media_type).order_by('ranking'))[:20] 
-    else:
-        trending = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('ranking'))[:20] 
+    try:
+        if media_type=="anime" or media_type=="manga":
+            trending = list(Media.objects.filter(type=media_type).order_by('ranking'))[:20] 
+        else:
+            trending = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('ranking'))[:20] 
+    except Exception as e:
+        print(str(e))
     
     # Latest Releases - Current Year, Sorted by release date (descending)
-    if media_type=="anime" or media_type=="manga":
-        latest = list(Media.objects.filter(type=media_type).order_by('-rdate'))
-    else:
-        latest = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('-rdate'))
+    try:
+        if media_type=="anime" or media_type=="manga":
+            latest = list(Media.objects.filter(type=media_type).order_by('-rdate'))
+        else:
+            latest = list(Media.objects.filter(type=media_type, year=str(date.today().year)).order_by('-rdate'))
+    except Exception as e:
+        print(str(e))
     
     # Genre and Language
     genre = media_list[:]
@@ -48,15 +57,33 @@ def dashboard(request, media_type):
     
     # Shuffle
     random.shuffle(media_list)
-    random.shuffle(genre)
-    random.shuffle(language)
-    random.shuffle(recommendation)
     
-    recommendation_list = recommendation[:20]
-    trending_list = trending[:20]
-    latest_list = latest[:20]
-    genre_list = genre[:50]
-    language_list = language[:50]
+    try:
+        random.shuffle(recommendation)
+        recommendation_list = recommendation[:20]
+    except Exception as e:
+        recommendation_list = []
+    try:
+        random.shuffle(trending)
+        trending_list = trending[:20]
+    except Exception as e:
+        trending_list = []
+    try:
+        random.shuffle(latest)
+        latest_list = latest[:20]
+    except Exception as e:
+        latest_list = []
+    try:
+        random.shuffle(genre)
+        genre_list = genre[:50]
+    except Exception as e:
+        genre_list = []
+    try:
+        random.shuffle(language)
+        language_list = language[:50]
+    except Exception as e:
+        language_list = []
+        
     
     # Template Object
     obj = {'media_type': media_type.upper(), 'media_list': media_list, 
